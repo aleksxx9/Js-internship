@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+label {
+  display: flex;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 15% 30% 15% 30%;
+  column-gap: 1em;
+  row-gap: 1em;
+}
+.wrapper {
+  width: 80%;
+  margin: auto;
+}
+.required {
+  color: red;
+}
+#form {
+  margin-top: 2em;
+  width: 100%;
+}
+#submit {
+  margin:2em 0;
+  width: 100%;
+}
+.container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    column-gap: 1em;
+    row-gap: 1em;
+}
+.error{
+  color:red;
+}

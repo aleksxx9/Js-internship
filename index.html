@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <form id="form" onsubmit="Submit(); return false">
+                <div class="grid">
+                    <label for="firstname">First name: <div class="required">*</div></label>
+                    <input type="text" id="firstname" name="firstname" required />
+                    <label for="lastname">Last name: <div class="required">*</div></label>
+                    <input type="text" id="lastname" name="lastname" required />
+                    <label for="birthdate">Date of birth: <div class="required">*</div></label>
+                    <input type="text" id="birthdate" name="birthdate" required />
+                    <label for="phone">Phone number: <div class="required">*</div></label>
+                    <input type="number" id="phone" name="phone" required />
+                    <label for="email">E-mail: <div class="required">*</div></label>
+                    <input type="text" id="email" name="email" required />
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" />
+                </div>
+                <input id="submit" type="submit" />
+            </form>
+            <div class="error"></div>
+            </br>
+            <div class="container"></div>
+        </div>
+        <script src="./script.js"></script>
+    </body>
+
+</html>

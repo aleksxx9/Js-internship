@@ -5,6 +5,9 @@ if (!localStorage.getItem('contacts')) {
 else {
     PostContacts(JSON.parse(localStorage.getItem('contacts')));
 }
+if (!localStorage.getItem('edit')) {
+    localStorage.setItem('edit', '{}')
+}
 
 function Submit() {
     //Gets list of contacts with added contact
@@ -53,16 +56,28 @@ function AddContact(formName) {
     const edit = Object.values(JSON.parse(localStorage.getItem('edit')));
     contacts.map(el => {
         if (formName === 'editContact') {
-            if ((edit[3] !== form[3].value && ((el.phone === form[3].value) && unique)) || (edit[4] !== form[4].value && ((el.email === form[4].value) && unique))) {
-                error = 'Email and phone number must be unique';
+            if ((edit[3] !== form[3].value && ((el.phone === form[3].value) && unique))) {
+                error = 'Phone number must be unique';
+                ErrorMsg(error);
+                unique = false;
+            }
+            if (edit[4] !== form[4].value && ((el.email === form[4].value) && unique)) {
+                error = 'Email must be unique';
                 ErrorMsg(error);
                 unique = false;
             }
         }
-        else if ((el.email === form[4].value || el.phone === form[3].value) && unique) {
-            error = 'Email and phone number must be unique';
-            ErrorMsg(error);
-            unique = false;
+        else {
+            if ((el.email === form[4].value) && unique) {
+                error = 'Email must be unique';
+                ErrorMsg(error);
+                unique = false;
+            }
+            if ((el.phone === form[3].value) && unique){
+                error = 'Phone number must be unique';
+                ErrorMsg(error);
+                unique = false;
+            }
         }
     })
     let data = [];
@@ -107,7 +122,7 @@ function PostContacts(data) {
         const edit = document.createElement('button');
         edit.classList.add('editButton');
         edit.innerHTML = 'edit';
-        contact.innerHTML = "First name: " + el.firstname + "</br>Last name: " + el.lastname + "</br>Date of birth: " + el.birthdate + "</br>Phone: " + el.phone + "</br>E-mail: " + el.email + "</br>Address: " + el.address + "</br>";
+        contact.innerHTML = `First name: ${el.firstname}</br>Last name: ${el.lastname}</br>Date of birth: ${el.birthdate}</br>Phone: ${el.phone}</br>E-mail: ${el.email}</br>Address: ${el.address}</br>`;
         contact.append(del);
         contact.append(edit);
         container.append(contact);
